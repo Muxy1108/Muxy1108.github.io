@@ -156,7 +156,7 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
       justify-content: space-between;
       animation-delay: 0.12s;
     }
@@ -257,26 +257,23 @@
     .avatar-card {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 12px;
-      border-radius: 18px;
+      gap: 18px;
+      padding: 18px 16px;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.74);
       border: 1px solid var(--line);
     }
 
     .avatar {
-      width: 74px;
-      height: 74px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #b89b82, #8b6f57);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fffdf9;
-      font-size: 1.8rem;
-      font-weight: 700;
+      object-fit: cover;
+      display: block;
       flex-shrink: 0;
       transition: transform 0.3s ease;
+      border: 1px solid rgba(80, 67, 56, 0.10);
+      background: #e9e1d8;
     }
 
     .hero-side:hover .avatar {
@@ -284,20 +281,21 @@
     }
 
     .avatar-text h2 {
-      font-size: 1.08rem;
-      margin-bottom: 2px;
+      font-size: 1.55rem;
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
     .avatar-text p {
       color: var(--muted);
-      font-size: 0.91rem;
+      font-size: 1.02rem;
     }
 
     .mini-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
+      margin-top: 2px;
     }
 
     .mini {
@@ -535,7 +533,7 @@
 
         <aside class="hero-side">
           <div class="avatar-card">
-            <img class="avatar" src="avatar.jpg" alt="Xie Yan" />
+            <img class="avatar" src="avatar.png" alt="Xie Yan" />
             <div class="avatar-text">
               <h2>Xie Yan</h2>
               <p>CS Student</p>
@@ -708,7 +706,7 @@
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="https://github.com/Muxy1108" target="_blank">Visit GitHub</a>
-              <a class="btn btn-secondary" href="mailto:xieyan2005118@gmail.com">Send Email</a>
+              <a class="btn btn-secondary" href="mailto:2175968350@qq.com">Send Email</a>
             </div>
           </div>
         </div>
