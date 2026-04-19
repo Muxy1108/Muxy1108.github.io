@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xie Yan | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --bg-soft: #fbfaf7;
+      --card: rgba(255, 255, 255, 0.82);
+      --card-strong: #ffffff;
+      --text: #2f2a24;
+      --muted: #7b746d;
+      --line: rgba(80, 67, 56, 0.10);
+      --primary: #8b6f57;
+      --primary-soft: #ede4da;
+      --accent: #b89b82;
+      --shadow: 0 12px 30px rgba(100, 81, 64, 0.07);
+      --shadow-hover: 0 18px 36px rgba(100, 81, 64, 0.11);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", "PingFang SC", "Microsoft YaHei", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(184, 155, 130, 0.10), transparent 28%),
+        linear-gradient(180deg, #fcfaf6 0%, #f7f4ee 45%, #f4efe7 100%);
+      line-height: 1.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1000px, 90%);
+      margin: 0 auto;
+    }
+
+    .site {
+      position: relative;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(252, 250, 246, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .brand {
+      font-size: 0.96rem;
+      letter-spacing: 0.14em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.22s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      padding: 62px 0 28px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .card,
+    .project-card,
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero-main:hover,
+    .hero-side:hover,
+    .card:hover,
+    .project-card:hover,
+    .contact-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(139, 111, 87, 0.16);
+    }
+
+    .hero-main {
+      padding: 34px;
+      animation-delay: 0.05s;
+    }
+
+    .hero-side {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: space-between;
+      animation-delay: 0.12s;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.05rem, 4.3vw, 3.35rem);
+      line-height: 1.13;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .accent {
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.99rem;
+      max-width: 600px;
+      margin-bottom: 18px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag,
+    .chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--primary);
+      background: #f8f3ec;
+      border: 1px solid rgba(139, 111, 87, 0.12);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .tag:hover,
+    .chip:hover {
+      transform: translateY(-1px);
+      background: #f4ede4;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      border: 1px solid transparent;
+      font-size: 0.93rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fffdf9;
+      box-shadow: 0 6px 18px rgba(139, 111, 87, 0.12);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 22px rgba(139, 111, 87, 0.16);
+    }
+
+    .btn-secondary {
+      background: #fffdf9;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .avatar-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--line);
+    }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b89b82, #8b6f57);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fffdf9;
+      font-size: 1.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-side:hover .avatar {
+      transform: scale(1.03);
+    }
+
+    .avatar-text h2 {
+      font-size: 1.08rem;
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    .avatar-text p {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mini {
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.64);
+      border: 1px solid var(--line);
+      transition: transform 0.22s ease, background 0.22s ease;
+    }
+
+    .mini:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .mini .label {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 3px;
+    }
+
+    .mini .value {
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 10px 0 14px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3,
+    .project-card h3 {
+      font-size: 1.04rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .card p,
+    .project-card p,
+    .contact-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .skill-boxes,
+    .info-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .skill-box,
+    .info-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+    }
+
+    .skill-box strong,
+    .info-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      padding: 20px;
+      min-height: 186px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(250,246,240,0.92));
+    }
+
+    .contact-card p {
+      max-width: 720px;
+      margin: 8px 0 16px;
+    }
+
+    footer {
+      padding: 28px 0 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .grid-2,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card,
+      .project-card,
+      .contact-card {
+        padding: 18px;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar-card {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <div class="brand">PORTFOLIO</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container hero-wrap">
+        <section class="hero-main">
+          <span class="eyebrow">CS Student · Developer</span>
+          <h1>
+            Hello, I'm <span class="accent">Xie Yan</span>
+          </h1>
+          <p>
+            I am a Computer Science undergraduate at SUSTech (Southern University of Science and Technology) in Shenzhen, China.
+            I enjoy building clean and practical projects, especially in web development, intelligent systems, software engineering,
+            and user-oriented tools that solve real problems.
+          </p>
+          <div class="tag-list">
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/Muxy1108" target="_blank">GitHub</a>
+            <a class="btn btn-secondary" href="#projects">View Projects</a>
+          </div>
+        </section>
+
+        <aside class="hero-side">
+          <div class="avatar-card">
+            <div class="avatar">X</div>
+            <div class="avatar-text">
+              <h2>Xie Yan</h2>
+              <p>CS Student</p>
+            </div>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="label">Focus</div>
+              <div class="value">Web · Systems · AI</div>
+            </div>
+            <div class="mini">
+              <div class="label">Status</div>
+              <div class="value">Learning & Building</div>
+            </div>
+            <div class="mini">
+              <div class="label">Location</div>
+              <div class="value">Shenzhen, China</div>
+            </div>
+            <div class="mini">
+              <div class="label">Email</div>
+              <div class="value">xieyan2005118@gmail.com</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-title">
+            <h2>About Me</h2>
+            <span>Overview</span>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <h3>Who I Am</h3>
+              <p>
+                I am a CS student who enjoys both technical work and creative expression.
+                Besides programming, I also like reading and playing the guitar.
+                I prefer projects that are simple, practical, and thoughtfully designed.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Background</h3>
+              <ul class="info-list">
+                <li class="info-item">
+                  <strong>Role</strong>
+                  Student / Developer
+                </li>
+                <li class="info-item">
+                  <strong>Interests</strong>
+                  Web Development, Artificial Intelligence, Algorithms, Software Engineering
+                </li>
+                <li class="info-item">
+                  <strong>Goal</strong>
+                  To keep building meaningful projects and grow a portfolio that reflects both technical ability and personal style
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-title">
+            <h2>Skills</h2>
+            <span>Skills & Focus</span>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <h3>Technical Skills</h3>
+              <div class="skill-boxes">
+                <div class="skill-box">
+                  <strong>Programming</strong>
+                  C++, Python, JavaScript
+                </div>
+                <div class="skill-box">
+                  <strong>Frontend</strong>
+                  HTML, CSS, basic frontend development and UI refinement
+                </div>
+                <div class="skill-box">
+                  <strong>CS Foundation</strong>
+                  Data Structures, Algorithms, Databases, Computer Networks
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <h3>What I Like Building</h3>
+              <div class="skill-boxes">
+                <div class="skill-box">
+                  <strong>Course Projects</strong>
+                  Turning course knowledge into real systems and useful tools
+                </div>
+                <div class="skill-box">
+                  <strong>Practical Tools</strong>
+                  Building small projects and pages that solve actual problems
+                </div>
+                <div class="skill-box">
+                  <strong>Portfolio Growth</strong>
+                  Continuously improving my personal site and project presentation
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-title">
+            <h2>Projects</h2>
+            <span>Selected Work</span>
+          </div>
+          <div class="projects">
+            <article class="project-card">
+              <h3>Student Assistant Scheduling System</h3>
+              <p>
+                A team project designed to support student assistant management and scheduling.
+                It focuses on organizing work shifts, improving workflow efficiency, and providing a clearer user experience through thoughtful interface design and planning.
+              </p>
+              <div class="chips">
+                <span class="chip">Web</span>
+                <span class="chip">UI Design</span>
+                <span class="chip">Team Project</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3>Better Guitar Tuner</h3>
+              <p>
+                A multi-module guitar tuner project combining a Flutter interface with shared C++ DSP and tuning logic.
+                It includes tuning presets, realtime microphone debugging tools, and platform bridges for desktop and iOS.
+              </p>
+              <div class="chips">
+                <span class="chip">Flutter</span>
+                <span class="chip">C++</span>
+                <span class="chip">DSP</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3>FTP Server for CS305</h3>
+              <p>
+                A Python-based FTP server built for a computer networks assignment.
+                It supports connection handling, anonymous login, and file transfer while following the required protocol behavior.
+              </p>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">Networking</span>
+                <span class="chip">Backend</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="contact-card">
+            <div class="section-title">
+              <h2>Contact</h2>
+              <span>Get in Touch</span>
+            </div>
+            <p>
+              If you are interested in my projects, or would like to connect about study, development, or collaboration,
+              feel free to reach out through GitHub or email.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://github.com/Muxy1108" target="_blank">Visit GitHub</a>
+              <a class="btn btn-secondary" href="mailto:xieyan2005118@gmail.com">Send Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© 2026 Xie Yan. Built for GitHub Pages.</div>
+    </footer>
+  </div>
+</body>
+</html>
