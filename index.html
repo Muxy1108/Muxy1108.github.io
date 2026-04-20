@@ -512,16 +512,25 @@
     .visitor-map {
       text-align: center;
       margin: 10px 0 24px;
+      overflow: hidden;
     }
 
     .visitor-map-inner {
-      width: 680px;
-      max-width: 90%;
+      width: 400px;
+      max-width: 80%;
       margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(100, 81, 64, 0.08);
+      transform: scale(0.6);
+      transform-origin: top center;
+      margin-bottom: -120px;
     }
+
+    .visitor-map-inner iframe,
+    .visitor-map-inner div,
+    .visitor-map-inner svg,
+    .visitor-map-inner canvas {
+      max-width: 100% !important;
+    }
+
   }
   </style>
 </head>
