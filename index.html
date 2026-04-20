@@ -490,7 +490,39 @@
       .avatar-card {
         align-items: flex-start;
       }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
+    } 
+
+    .edu-header h3 {
+      margin-bottom: 0;
     }
+
+    .edu-date {
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .visitor-map {
+      text-align: center;
+      margin: 10px 0 24px;
+    }
+
+    .visitor-map-inner {
+      width: 680px;
+      max-width: 90%;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(100, 81, 64, 0.08);
+    }
+  }
   </style>
 </head>
 <body>
@@ -500,7 +532,6 @@
         <div class="brand">PORTFOLIO</div>
         <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
@@ -516,7 +547,7 @@
           </h1>
           <p>
             I am a Computer Science undergraduate at SUSTech (Southern University of Science and Technology) in Shenzhen, China.
-            I enjoy building clean and practical projects, especially in intelligent systems, 
+            I enjoy building clean and practical projects, especially in intelligent systems,
             and user-oriented tools that solve real problems.
           </p>
           <div class="tag-list">
@@ -543,7 +574,7 @@
           <div class="mini-grid">
             <div class="mini">
               <div class="label">Focus</div>
-              <div class="value">Speech and Audio Processing · NLP · AI</div>
+              <div class="value">Speech & Audio Processing · NLP · AI</div>
             </div>
             <div class="mini">
               <div class="label">Status</div>
@@ -569,44 +600,18 @@
             <h2>About Me</h2>
             <span>Overview</span>
           </div>
+
           <div class="grid-2">
             <article class="card">
               <h3>Who I Am</h3>
               <p>
-                I am from Chongqing, China. <br> 
+                I am from Chongqing, China. <br>
                 I code, read, and play the guitar. <br>
-                I spent sometime in both Nankai and Bashu Secondary School. <br> 
-                I used to have cat named "Jiaojiao", who had always been a companion through my younger years. <br>
+                I spent some time in both Nankai and Bashu Secondary School. <br>
+                I used to have a cat named "Jiaojiao", who had always been a companion through my younger years.
               </p>
             </article>
-            <article class="card">
-              <h3>Background</h3>
-              <ul class="info-list">
-                <li class="info-item">
-                  <strong>Role</strong>
-                  Student / Developer
-                </li>
-                <li class="info-item">
-                  <strong>Interests</strong>
-                    Speech and Audio Processing, Natural Language Processing, AI
-                </li>
-                <li class="info-item">
-                  <strong>Goal</strong>
-                    Keep coding and coding; work and travel around the world.
-                </li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="section" id="skills">
-        <div class="container">
-          <div class="section-title">
-            <h2>Skills</h2>
-            <span>Skills & Focus</span>
-          </div>
-          <div class="grid-2">
             <article class="card">
               <h3>Technical Skills</h3>
               <div class="skill-boxes">
@@ -616,32 +621,28 @@
                 </div>
                 <div class="skill-box">
                   <strong>Frontend</strong>
-                    HTML, CSS, basic frontend development and UI refinement
+                  HTML, CSS, basic frontend development and UI refinement
                 </div>
                 <div class="skill-box">
                   <strong>CS Foundation</strong>
-                    Data Structures, Algorithms, Databases, Computer Networks
-                </div>
-              </div>
-            </article>
-            <article class="card">
-              <h3>What I Like Building</h3>
-              <div class="skill-boxes">
-                <div class="skill-box">
-                  <strong>Course Projects</strong>
-                  Turning course knowledge into real systems and useful tools
-                </div>
-                <div class="skill-box">
-                  <strong>Practical Tools</strong>
-                  Building small projects and pages that solve actual problems
-                </div>
-                <div class="skill-box">
-                  <strong>Portfolio Growth</strong>
-                  Continuously improving my personal site and project presentation
+                  Data Structures, Algorithms, Databases, Computer Networks
                 </div>
               </div>
             </article>
           </div>
+
+          <div class="section-title" style="margin-top: 18px;">
+            <h2>Education</h2>
+            <span>Academic Background</span>
+          </div>
+
+          <article class="card">
+            <h3>Southern University of Science and Technology</h3>
+            <p>
+              B.S. in Computer Science and Technology <br>
+              Sep 2024 - Jun 2028 (expected)
+            </p>
+          </article>
         </div>
       </section>
 
@@ -655,8 +656,8 @@
             <article class="project-card">
               <h3>Student Productivity Agent</h3>
               <p>
-                A team project designed to build an autonomous AI agent for students. 
-                The agent can reason about your goals and act on your behalf to analyse your schedule, 
+                A team project designed to build an autonomous AI agent for students.
+                The agent can reason about your goals and act on your behalf to analyse your schedule,
                 organize your files, and hunt down campus information.
               </p>
               <div class="chips">
@@ -718,6 +719,17 @@
     <footer>
       <div class="container">© 2026 Xie Yan. Built for GitHub Pages.</div>
     </footer>
+
+    <div class="visitor-map">
+      <div class="visitor-map-inner">
+        <script
+          type="text/javascript"
+          id="mapmyvisitors"
+          src="https://mapmyvisitors.com/map.js?d=yMKyPKvtOCBTGd3Bhy3-jjPldR-5q5q855kx96SFLno&cl=ffffff&w=a">
+        </script>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
