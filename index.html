@@ -393,6 +393,38 @@
       font-size: 0.95rem;
     }
 
+    /* moved out of media query so desktop works */
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .edu-header h3 {
+      margin-bottom: 0;
+    }
+
+
+    .edu-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .edu-degree {
+      color: var(--muted);
+    }
+
+    .edu-date {
+      color: #9a938b;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -403,10 +435,16 @@
       padding: 20px;
       min-height: 186px;
       background: rgba(255, 255, 255, 0.72);
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
       transform: translateY(-4px);
+    }
+
+    .project-card p {
+      flex-grow: 1;
     }
 
     .chips {
@@ -414,6 +452,32 @@
       flex-wrap: wrap;
       gap: 7px;
       margin-top: 12px;
+    }
+
+    .project-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: #fffdf9;
+      color: var(--text);
+      border: 1px solid var(--line);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .project-btn:hover {
+      transform: translateY(-1px);
+      background: #f8f3ec;
+      box-shadow: 0 8px 18px rgba(139, 111, 87, 0.10);
     }
 
     .contact-card {
@@ -432,6 +496,12 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    .visitor-map {
+      text-align: center;
+      margin: 10px 0 24px;
+    }
+
 
     @keyframes fadeUp {
       from {
@@ -491,31 +561,13 @@
         align-items: flex-start;
       }
 
-    .edu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 8px;
-    } 
+      .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
 
-    .edu-header h3 {
-      margin-bottom: 0;
     }
-
-    .edu-date {
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    .visitor-map {
-      text-align: center;
-      margin: 10px 0 24px;
-      overflow: hidden;
-    }
-
-  }
   </style>
 </head>
 <body>
@@ -626,15 +678,15 @@
 
           <div class="section-title" style="margin-top: 18px;">
             <h2>Education</h2>
-            <span>Academic Background</span>
+            <span>Background</span>
           </div>
 
           <article class="card">
             <h3>Southern University of Science and Technology</h3>
-            <p>
-              B.S. in Computer Science and Technology <br>
-              Sep 2024 - Jun 2028 (expected)
-            </p>
+            <div class="edu-meta">
+              <span class="edu-degree">B.S. in Computer Science and Technology</span>
+              <span class="edu-date">Sep 2024 - Jun 2028 (expected)</span>
+            </div>
           </article>
         </div>
       </section>
@@ -658,6 +710,9 @@
                 <span class="chip">UI Design</span>
                 <span class="chip">Team Project</span>
               </div>
+              <div class="project-actions">
+                <a class="project-btn" href="https://github.com/Muxy1108" target="_blank">GitHub</a>
+              </div>
             </article>
 
             <article class="project-card">
@@ -671,6 +726,9 @@
                 <span class="chip">C++</span>
                 <span class="chip">DSP</span>
               </div>
+              <div class="project-actions">
+                <a class="project-btn" href="https://github.com/Muxy1108/Better-Guitar-Tuner" target="_blank">GitHub</a>
+              </div>
             </article>
 
             <article class="project-card">
@@ -683,6 +741,9 @@
                 <span class="chip">Python</span>
                 <span class="chip">Networking</span>
                 <span class="chip">Backend</span>
+              </div>
+              <div class="project-actions">
+                <a class="project-btn" href="https://github.com/Muxy1108" target="_blank">GitHub</a>
               </div>
             </article>
           </div>
