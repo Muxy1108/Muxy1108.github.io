@@ -39,7 +39,13 @@
     h1, h2, h3 { color: var(--heading-color); }
     a { color: var(--link-color); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    a:visited { color: var(--visited-color); }
+    a:visited {
+    color: var(--link-color);
+    }
+    nav a.active,
+    nav a.active:visited {
+        color: var(--visited-color);
+    }
     header h1 { font-size: 1.5em; margin-bottom: 0.4em; }
     nav a { margin-right: 10px; }
     main { line-height: 1.6; }
@@ -119,5 +125,21 @@
   </main>
 
   <footer>© 2026 Xie Yan</footer>
+  <script>
+    const links = document.querySelectorAll('nav a[href^="#"]');
+
+    function updateActive() {
+      const currentHash = window.location.hash || '#about';
+
+      links.forEach(link => {
+        const isActive = link.getAttribute('href') === currentHash;
+        link.classList.toggle('active', isActive);
+      });
+    }
+
+    window.addEventListener('hashchange', updateActive);
+
+    updateActive();
+  </script>
 </body>
 </html>
